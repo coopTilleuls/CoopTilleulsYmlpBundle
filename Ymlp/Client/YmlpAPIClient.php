@@ -1,18 +1,59 @@
 <?php
+
+/*
+ * This file is part of the CoopTilleulsYmlpBundle package.
+ *
+ * (c) La Coopérative des Tilleuls <contact@les-tilleuls.coop>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client;
 
-class YmlpAPIClient
+/**
+ * YmlpAPIClient
+ * 
+ * @author Baptiste Meyer <baptiste@les-tilleuls.coop>
+ * @abstract
+ */
+abstract class YmlpAPIClient
 {
+    /**
+     *
+     */
     const API_URL = 'www.ymlp.com/api/';
     
+    /**
+     *
+     * @var string
+     */
     protected $apiKey;
     
-    protected $apiUsername;
+    /**
+     *
+     * @var string
+     */
+    protected $apiUsername; 
     
+    /**
+     *
+     * @var boolean
+     */
     protected $useSecure;
     
+    /**
+     *
+     * @var type 
+     */
     protected $curl;
     
+    /**
+     * 
+     * @param string $apiKey
+     * @param string $apiUsername
+     * @param boolean $useSecure
+     */
     public function __construct($apiKey, $apiUsername, $useSecure)
     {
         $this->apiKey = $apiKey;
@@ -26,11 +67,21 @@ class YmlpAPIClient
         curl_setopt($this->curl, CURLOPT_USERAGENT, 'CoopTilleulsYmlpBundle for Symfony2 - http://les-tilleuls.coop');
     }
     
+    /**
+     * 
+     */
     public function __destruct()
     {
         curl_close($this->curl);
     }
     
+    /**
+     * 
+     * @param string $method
+     * @param array $params
+     * @return mixed
+     * @throws \RuntimeException
+     */
     protected function call($method = '', array $params = array())
     {
         $params['key'] = $this->apiKey;
@@ -60,6 +111,12 @@ class YmlpAPIClient
         return $this->parseError($response);
     }
     
+    /**
+     * 
+     * @param mixed $response
+     * @return mixed
+     * @throws \Exception
+     */
     protected function parseError($response)
     {
         if (isset($response->Code) && intval($response->Code) > 0) {
@@ -69,6 +126,12 @@ class YmlpAPIClient
         return $response;
     }
     
+    /**
+     * Is the simplest command, doesn't serve any useful purpose but is a great command to understand this API feature and to test your API implementation.
+     * When you call this command, it will output "Hello!"
+     * 
+     * @return mixed
+     */
     public function ping()
     {
         return $this->call('Ping');
