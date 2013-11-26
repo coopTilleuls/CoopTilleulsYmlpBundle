@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace CoopTilleuls\Bundle\YmlpBundle;
-
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+namespace CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception;
 
 /**
+ * YmlpException
+ *
  * @author Baptiste Meyer <baptiste@les-tilleuls.coop>
  */
-class CoopTilleulsYmlpBundle extends Bundle
+class YmlpException extends \Exception
 {
 }
