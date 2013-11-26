@@ -1,0 +1,42 @@
+parameters:
+    coop_tilleuls_ymlp.client.factory.class: CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client\YmlpAPIClientFactory
+    coop_tilleuls_ymlp.client.archive.class: CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client\Method\ArchiveMethodsClient
+    coop_tilleuls_ymlp.client.contacts.class: CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client\Method\ContactsMethodsClient
+    coop_tilleuls_ymlp.client.fields.class: CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client\Method\FieldsMethodsClient
+    coop_tilleuls_ymlp.client.filters.class: CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client\Method\FiltersMethodsClient
+    coop_tilleuls_ymlp.client.groups.class: CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client\Method\GroupsMethodsClient
+    coop_tilleuls_ymlp.client.newsletter.class: CoopTilleuls\Bundle\YmlpBundle\Ymlp\Client\Method\NewsletterMethodsClient
+
+services:
+    coop_tilleuls_ymlp.client.factory:
+        class: "%coop_tilleuls_ymlp.client.factory.class%"
+    coop_tilleuls_ymlp.client.archive:
+        class: "%coop_tilleuls_ymlp.client.archive.class%"
+        factory_class: "%coop_tilleuls_ymlp.client.factory.class%"
+        factory_method: getArchiveClient
+        arguments: ["%coop_tilleuls_ymlp.api_key%", "%coop_tilleuls_ymlp.api_username%", "%coop_tilleuls_ymlp.use_secure%"]
+    coop_tilleuls_ymlp.client.contacts:
+        class: "%coop_tilleuls_ymlp.client.contacts.class%"
+        factory_class: "%coop_tilleuls_ymlp.client.factory.class%"
+        factory_method: getContactsClient
+        arguments: ["%coop_tilleuls_ymlp.api_key%", "%coop_tilleuls_ymlp.api_username%", "%coop_tilleuls_ymlp.use_secure%"]
+    coop_tilleuls_ymlp.client.fields:
+        class: "%coop_tilleuls_ymlp.client.fields.class%"
+        factory_class: "%coop_tilleuls_ymlp.client.factory.class%"
+        factory_method: getFieldsClient
+        arguments: ["%coop_tilleuls_ymlp.api_key%", "%coop_tilleuls_ymlp.api_username%", "%coop_tilleuls_ymlp.use_secure%"]
+    coop_tilleuls_ymlp.client.filters:
+        class: "%coop_tilleuls_ymlp.client.filters.class%"
+        factory_class: "%coop_tilleuls_ymlp.client.factory.class%"
+        factory_method: getFiltersClient
+        arguments: ["%coop_tilleuls_ymlp.api_key%", "%coop_tilleuls_ymlp.api_username%", "%coop_tilleuls_ymlp.use_secure%"]
+    coop_tilleuls_ymlp.client.groups:
+        class: "%coop_tilleuls_ymlp.client.groups.class%"
+        factory_class: "%coop_tilleuls_ymlp.client.factory.class%"
+        factory_method: getGroupsClient
+        arguments: ["%coop_tilleuls_ymlp.api_key%", "%coop_tilleuls_ymlp.api_username%", "%coop_tilleuls_ymlp.use_secure%"]
+    coop_tilleuls_ymlp.client.newsletter:
+        class: "%coop_tilleuls_ymlp.client.newsletter.class%"
+        factory_class: "%coop_tilleuls_ymlp.client.factory.class%"
+        factory_method: getNewsletterClient
+        arguments: ["%coop_tilleuls_ymlp.api_key%", "%coop_tilleuls_ymlp.api_username%", "%coop_tilleuls_ymlp.use_secure%"]
