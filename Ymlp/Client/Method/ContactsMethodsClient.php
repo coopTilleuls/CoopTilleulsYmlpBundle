@@ -98,7 +98,7 @@ class ContactsMethodsClient extends YmlpAPIClient
      * @param string $startDate Only show contacts that were added after this date (optional, format: YYYY-MM-DD, e.g.: 2020-05-31)
      * @param string $stopDate Only show contacts that were added before this date (optional, format: YYYY-MM-DD, e.g.: 2020-05-31)
      * @param string $sorting Sorting order of the returned email addresses, either ascending ('a' first) or descending ('z' first) (optional): Ascending (default) or Descending
-     * * @return mixed
+     * @return mixed
      */
     public function getList($groupId = '', $fieldId = '', $page = '', $numberPerPage = '', $startDate = '', $stopDate = '', $sorting = '')
     {
