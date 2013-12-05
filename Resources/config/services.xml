@@ -12,7 +12,7 @@
             <argument>%coop_tilleuls_ymlp.api_url%</argument>
             <argument>%coop_tilleuls_ymlp.api_key%</argument>
             <argument>%coop_tilleuls_ymlp.api_username%</argument>
-            <argument>%coop_tilleuls_ymlp.guzzle_client%</argument>
+            <argument></argument>
         </service>
     </services>
 </container>
