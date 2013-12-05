@@ -32,9 +32,18 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('coop_tilleuls_ymlp');
         $rootNode
             ->children()
-                ->scalarNode('api_key')->isRequired()->end()
-                ->scalarNode('api_username')->isRequired()->end()
-                ->booleanNode('use_secure')->isRequired()->end()
+                ->booleanNode('api_url')
+                    ->cannotBeEmpty()
+                    ->defaultValue('https://www.ymlp.com/api/')
+                ->end()
+                ->scalarNode('api_key')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('api_username')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
             ->end()
         ;
 

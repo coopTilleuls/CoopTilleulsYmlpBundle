@@ -33,11 +33,12 @@ class CoopTilleulsYmlpExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
         
+        $container->setParameter('coop_tilleuls_ymlp.api_url', $config['api_url']);
         $container->setParameter('coop_tilleuls_ymlp.api_key', $config['api_key']);
         $container->setParameter('coop_tilleuls_ymlp.api_username', $config['api_username']);
-        $container->setParameter('coop_tilleuls_ymlp.use_secure', $config['use_secure']);
+        $container->setParameter('coop_tilleuls_ymlp.guzzle_client', null);
         
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml'); 
     }
 }
