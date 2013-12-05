@@ -1,0 +1,22 @@
+{
+    "name": "tilleuls/ymlp-bundle",
+    "type": "symfony-bundle",
+    "description": "Integrates YMLP API for Symfony2",
+    "keywords": ["ymlp", "api", "customer", "newsletter"],
+    "homepage": "http://les-tilleuls.coop",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Baptiste Meyer",
+            "email": "baptiste@les-tilleuls.coop",
+            "homepage": "http://les-tilleuls.coop"
+        }
+    ],
+    "require": {
+        "symfony/symfony": ">=2.2,<2.4-dev",
+    },
+    "autoload": {
+        "psr-0": { "CoopTilleuls\\Bundle\\YmlpBundle": ""}
+    },
+    "target-dir": "CoopTilleuls/Bundle/YmlpBundle"
+}
