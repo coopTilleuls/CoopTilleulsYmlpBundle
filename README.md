@@ -30,7 +30,7 @@ public function registerBundles()
 
 coop_tilleuls_ymlp:
     # YMLP URL for API calls (default to https://www.ymlp.com/api/)
-    api_url: ~
+    api_url: https://www.ymlp.com/api/
     # Your YMLP API key (no default)
     api_key: YOURSECRETAPIKEY1234
     # Your YMLP username (no default)
