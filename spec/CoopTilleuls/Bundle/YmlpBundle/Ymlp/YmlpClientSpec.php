@@ -1,33 +1,53 @@
 <?php
 
+/*
+ * This file is part of the CoopTilleulsYmlpBundle package.
+ *
+ * (c) La Coopérative des Tilleuls <contact@les-tilleuls.coop>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace spec\CoopTilleuls\Bundle\YmlpBundle\Ymlp;
 
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 use Guzzle\Http\ClientInterface;
 use Guzzle\Http\Message\EntityEnclosingRequestInterface;
 use Guzzle\Http\Message\Response;
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
+/**
+ * Test
+ *
+ * @author Kévin Dunglas <dunglas@les-tilleuls.coop>
+ */
 class YmlpClientSpec extends ObjectBehavior
 {
+    const API_URL = 'http://example.com';
+    const API_KEY = 'S3CR3TK3Y';
+    const API_USERNAME = 'username';
+
     function let(
         ClientInterface $client,
-        EntityEnclosingRequestInterface $requestOk,
-        Response $responseOk
+        EntityEnclosingRequestInterface $request,
+        Response $response
     )
     {
-        $apiUrl = 'http://example.com';
-        $apiKey = 'KEY';
-        $apiUsername = 'username';
+        $client->post(Argument::type('string'))->will(function ($args) use ($response, $request) {
+            if ('Error' === $args[0]) {
+                $response->json()->willReturn(array ('Code' => 1, 'Output' => 'error'));
+            } else {
+                $response->json()->willReturn(array ('Code' => 0));
+            }
 
-        $responseOk->json()->willReturn(array ('Code' => 0));
+            return $request;
+        });
 
-        $requestOk->addPostFields(Argument::type('array'))->willReturn($requestOk);
-        $requestOk->send()->willReturn($responseOk);
+        $request->addPostFields(Argument::type('array'))->willReturn($request);
+        $request->send()->willReturn($response);
 
-        $client->post(Argument::type('string'))->willReturn($requestOk);
-
-        $this->beConstructedWith($apiUrl, $apiKey, $apiUsername, $client);
+        $this->beConstructedWith(self::API_URL, self::API_KEY, self::API_USERNAME, $client);
     }
 
     function it_is_initializable()
@@ -38,5 +58,10 @@ class YmlpClientSpec extends ObjectBehavior
     function it_sends_commands()
     {
         $this->call('Ping')->shouldBe(array ('Code' => 0));
+    }
+
+    function it_throws_error()
+    {
+        $this->shouldThrow('\CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException')->duringCall('Error');
     }
 }
