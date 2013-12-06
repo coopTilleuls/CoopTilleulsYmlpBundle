@@ -1,6 +1,6 @@
 # CoopTilleulsYmlpBundle, YMLP API for Symfony2
 
-This bundle integrates [YMLP API](http://www.ymlp.com/) into your [Symfony2](http://symfony.com) projects.
+This bundle integrates the [Your Mailing List Provider (YMLP)](http://www.ymlp.com/) API into  [Symfony2](http://symfony.com) projects.
 
 ## Installation
 
@@ -27,7 +27,7 @@ public function registerBundles()
 
 ```yaml
 # app/config/config.yml
-# ...
+
 coop_tilleuls_ymlp:
     # YMLP URL for API calls (default to https://www.ymlp.com/api/)
     api_url: ~
@@ -35,12 +35,13 @@ coop_tilleuls_ymlp:
     api_key: YOURSECRETAPIKEY1234
     # Your YMLP username (no default)
     api_username: tilleuls
-# ...
 ```
 Usage
 -----
 
 ```php
+use CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException;
+
 // Get an instance of the YMLP API client as a service
 $ymlpClient = $this->get('coop_tilleuls_ymlp.client');
 
@@ -50,14 +51,14 @@ $pingResponse = $ymlpClient->call('Ping');
 // Add a new contact to one or more groups with exception handling
 try {
     $contactsAddResponse = $ymlpClient->call('Contacts.Add', array('Email' => 'baptiste@les-tilleuls.coop', 'GroupID' => 1));
-} catch (\CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException $e) {
+} catch (YmlpException $e) {
     //...
 }
 ```
 
 The `call()` method returns an array containing the response or throws an exception of type `\CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException`.
 
-You can obtain a list of all the commands of the API, their parameters and their responses on the [API page](http://www.ymlp.com/app/api.php) of [their website](http://www.ymlp.com/) after login.
+You can obtain a list of all the commands of the API, their parameters and their responses on the [YMLP API page](http://www.ymlp.com/app/api.php) (require YMLP credentials).
 
 ## Credits
 
