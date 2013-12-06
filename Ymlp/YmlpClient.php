@@ -17,11 +17,11 @@ use CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException;
 
 /**
  * YmlpClient
- * 
+ *
  * @author Baptiste Meyer <baptiste@les-tilleuls.coop>
  */
 class YmlpClient
-{  
+{
     /**
      * @var string
      */
@@ -36,10 +36,10 @@ class YmlpClient
     protected $client;
 
     /**
-     * 
-     * @param string $apiUrl
-     * @param string $apiKey
-     * @param string $apiUsername
+     *
+     * @param string                       $apiUrl
+     * @param string                       $apiKey
+     * @param string                       $apiUsername
      * @param \Guzzle\Http\ClientInterface $client
      */
     public function __construct($apiUrl, $apiKey, $apiUsername, ClientInterface $client = null)
@@ -55,9 +55,9 @@ class YmlpClient
     }
 
     /**
-     * 
-     * @param string $method
-     * @param array $params
+     *
+     * @param  string        $method
+     * @param  array         $params
      * @return array
      * @throws YmlpException
      */
@@ -76,8 +76,8 @@ class YmlpClient
     }
 
     /**
-     * 
-     * @param array $data
+     *
+     * @param  array         $data
      * @return array
      * @throws YmlpException
      */

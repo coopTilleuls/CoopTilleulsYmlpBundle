@@ -13,10 +13,9 @@ namespace CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception;
 
 /**
  * YmlpException
- * 
+ *
  * @author Baptiste Meyer <baptiste@les-tilleuls.coop>
  */
 class YmlpException extends \Exception
 {
 }
-
