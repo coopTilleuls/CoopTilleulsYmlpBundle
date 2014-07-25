@@ -28,7 +28,7 @@ class YmlpClientSpec extends ObjectBehavior
     const API_KEY = 'S3CR3TK3Y';
     const API_USERNAME = 'username';
 
-    public function let(
+    function let(
         ClientInterface $client,
         EntityEnclosingRequestInterface $request,
         Response $response
@@ -50,17 +50,17 @@ class YmlpClientSpec extends ObjectBehavior
         $this->beConstructedWith(self::API_URL, self::API_KEY, self::API_USERNAME, $client);
     }
 
-    public function it_is_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('CoopTilleuls\Bundle\YmlpBundle\Ymlp\YmlpClient');
     }
 
-    public function it_sends_commands()
+    function it_sends_commands()
     {
         $this->call('Ping')->shouldBe(array('Code' => 0));
     }
 
-    public function it_throws_error()
+    function it_throws_error()
     {
         $this->shouldThrow('\CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException')->duringCall('Error');
     }
