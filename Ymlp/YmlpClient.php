@@ -39,15 +39,15 @@ class YmlpClient
     {
         if (null === $client) {
             $client = new Client([
-                'base_url' => $apiUrl,
-                'defaults' => [
-                    'headers' => [
-                        'User-Agent' => 'CoopTilleulsYmlpBundle for Symfony2'
+                'base_url'  => $apiUrl,
+                'defaults'  => [
+                    'headers'   => [
+                        'User-Agent'    => 'CoopTilleulsYmlpBundle for Symfony2'
                     ],
-                    'body' => [
-                        'Key' => $apiKey,
-                        'Username' => $apiUsername,
-                        'Output' => 'JSON'
+                    'body'      => [
+                        'Key'           => $apiKey,
+                        'Username'      => $apiUsername,
+                        'Output'        => 'JSON'
                     ]
                 ]
             ]);
@@ -58,8 +58,8 @@ class YmlpClient
 
     /**
      *
-     * @param  string        $method
-     * @param  array         $params
+     * @param  string            $method
+     * @param  array             $params
      * @return array
      * @throws RequestException
      * @throws \LogicException
