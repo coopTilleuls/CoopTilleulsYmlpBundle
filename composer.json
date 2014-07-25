@@ -13,8 +13,8 @@
         }
     ],
     "require": {
-        "symfony/symfony": ">=2.2,<2.4-dev",
-        "guzzle/guzzle": "~3.7"
+        "symfony/symfony": ">=2.2,<2.5-dev",
+        "guzzle/guzzle": "~4.0"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"

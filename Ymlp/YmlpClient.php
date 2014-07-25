@@ -31,7 +31,7 @@ class YmlpClient
      */
     protected $apiUsername;
     /**
-     * @var \Guzzle\Http\ClientInterface
+     * @var ClientInterface
      */
     protected $client;
 
@@ -40,7 +40,7 @@ class YmlpClient
      * @param string                       $apiUrl
      * @param string                       $apiKey
      * @param string                       $apiUsername
-     * @param \Guzzle\Http\ClientInterface $client
+     * @param ClientInterface $client
      */
     public function __construct($apiUrl, $apiKey, $apiUsername, ClientInterface $client = null)
     {
@@ -83,7 +83,7 @@ class YmlpClient
      */
     protected function parseError(array $data)
     {
-        if (isset ($data['Code']) && intval($data['Code']) > 0) {
+        if (isset($data['Code']) && intval($data['Code']) > 0) {
             throw new YmlpException($data['Output'], intval($data['Code']));
         }
 

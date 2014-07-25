@@ -1,6 +1,6 @@
 # CoopTilleulsYmlpBundle, YMLP API for Symfony2
 
-This bundle integrates the [Your Mailing List Provider (YMLP)](http://www.ymlp.com/) API into  [Symfony2](http://symfony.com) projects.
+This bundle integrates the [Your Mailing List Provider (YMLP)](http://www.ymlp.com/) API into [Symfony2](http://symfony.com) projects.
 
 ## Installation
 

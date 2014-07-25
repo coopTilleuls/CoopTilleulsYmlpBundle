@@ -20,7 +20,7 @@ use Guzzle\Http\Message\Response;
 /**
  * Test
  *
- * @author Kévin Dunglas <dunglas@les-tilleuls.coop>
+ * @author Kévin Dunglas <kevin@les-tilleuls.coop>
  */
 class YmlpClientSpec extends ObjectBehavior
 {
