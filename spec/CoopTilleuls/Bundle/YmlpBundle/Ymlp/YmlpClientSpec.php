@@ -13,9 +13,8 @@ namespace spec\CoopTilleuls\Bundle\YmlpBundle\Ymlp;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Guzzle\Http\ClientInterface;
-use Guzzle\Http\Message\EntityEnclosingRequestInterface;
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Message\ResponseInterface;
 
 /**
  * Test
@@ -30,22 +29,18 @@ class YmlpClientSpec extends ObjectBehavior
 
     function let(
         ClientInterface $client,
-        EntityEnclosingRequestInterface $request,
-        Response $response
+        ResponseInterface $response
     )
     {
-        $client->post(Argument::type('string'))->will(function ($args) use ($response, $request) {
+        $client->post(Argument::type('string'), Argument::type('array'))->will(function ($args) use ($response) {
             if ('Error' === $args[0]) {
                 $response->json()->willReturn(array('Code' => 1, 'Output' => 'error'));
             } else {
                 $response->json()->willReturn(array('Code' => 0));
             }
 
-            return $request;
+            return $response;
         });
-
-        $request->addPostFields(Argument::type('array'))->willReturn($request);
-        $request->send()->willReturn($response);
 
         $this->beConstructedWith(self::API_URL, self::API_KEY, self::API_USERNAME, $client);
     }

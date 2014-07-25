@@ -11,8 +11,9 @@
 
 namespace CoopTilleuls\Bundle\YmlpBundle\Ymlp;
 
-use Guzzle\Http\ClientInterface;
-use Guzzle\Http\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException;
 
 /**
@@ -22,14 +23,6 @@ use CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException;
  */
 class YmlpClient
 {
-    /**
-     * @var string
-     */
-    protected $apiKey;
-    /**
-     * @var string
-     */
-    protected $apiUsername;
     /**
      * @var ClientInterface
      */
@@ -45,13 +38,22 @@ class YmlpClient
     public function __construct($apiUrl, $apiKey, $apiUsername, ClientInterface $client = null)
     {
         if (null === $client) {
-            $client = new Client($apiUrl);
-            $client->setUserAgent('CoopTilleulsYmlpBundle for Symfony2');
+            $client = new Client([
+                'base_url' => $apiUrl,
+                'defaults' => [
+                    'headers' => [
+                        'User-Agent' => 'CoopTilleulsYmlpBundle for Symfony2'
+                    ],
+                    'body' => [
+                        'Key' => $apiKey,
+                        'Username' => $apiUsername,
+                        'Output' => 'JSON'
+                    ]
+                ]
+            ]);
         }
 
         $this->client = $client;
-        $this->apiKey = $apiKey;
-        $this->apiUsername = $apiUsername;
     }
 
     /**
@@ -59,17 +61,14 @@ class YmlpClient
      * @param  string        $method
      * @param  array         $params
      * @return array
+     * @throws RequestException
+     * @throws \LogicException
+     * @throws \RuntimeException
      * @throws YmlpException
      */
     public function call($method, array $params = array())
     {
-        $params['Key'] = $this->apiKey;
-        $params['Username'] = $this->apiUsername;
-        $params['Output'] = 'JSON';
-
-        $request = $this->client->post($method)->addPostFields($params);
-        $response = $request->send();
-
+        $response = $this->client->post($method, array('body' => $params));
         $data = $this->parseError($response->json());
 
         return $data;
