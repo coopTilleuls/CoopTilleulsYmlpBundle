@@ -37,9 +37,9 @@ class YmlpClient
 
     /**
      *
-     * @param string                       $apiUrl
-     * @param string                       $apiKey
-     * @param string                       $apiUsername
+     * @param string          $apiUrl
+     * @param string          $apiKey
+     * @param string          $apiUsername
      * @param ClientInterface $client
      */
     public function __construct($apiUrl, $apiKey, $apiUsername, ClientInterface $client = null)

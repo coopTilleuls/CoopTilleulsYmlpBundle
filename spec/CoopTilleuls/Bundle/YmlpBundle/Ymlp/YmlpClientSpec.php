@@ -28,7 +28,7 @@ class YmlpClientSpec extends ObjectBehavior
     const API_KEY = 'S3CR3TK3Y';
     const API_USERNAME = 'username';
 
-    function let(
+    public function let(
         ClientInterface $client,
         EntityEnclosingRequestInterface $request,
         Response $response
@@ -36,9 +36,9 @@ class YmlpClientSpec extends ObjectBehavior
     {
         $client->post(Argument::type('string'))->will(function ($args) use ($response, $request) {
             if ('Error' === $args[0]) {
-                $response->json()->willReturn(array ('Code' => 1, 'Output' => 'error'));
+                $response->json()->willReturn(array('Code' => 1, 'Output' => 'error'));
             } else {
-                $response->json()->willReturn(array ('Code' => 0));
+                $response->json()->willReturn(array('Code' => 0));
             }
 
             return $request;
@@ -50,17 +50,17 @@ class YmlpClientSpec extends ObjectBehavior
         $this->beConstructedWith(self::API_URL, self::API_KEY, self::API_USERNAME, $client);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType('CoopTilleuls\Bundle\YmlpBundle\Ymlp\YmlpClient');
     }
 
-    function it_sends_commands()
+    public function it_sends_commands()
     {
-        $this->call('Ping')->shouldBe(array ('Code' => 0));
+        $this->call('Ping')->shouldBe(array('Code' => 0));
     }
 
-    function it_throws_error()
+    public function it_throws_error()
     {
         $this->shouldThrow('\CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException')->duringCall('Error');
     }
