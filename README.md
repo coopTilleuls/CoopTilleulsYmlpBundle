@@ -62,4 +62,4 @@ You can obtain a list of all the commands of the API, their parameters and their
 
 ## Credits
 
-This bundle has been written by Baptiste Meyer for [La Coopérative des Tilleuls](http://les-tilleuls.coop).
+This bundle has been written by Baptiste Meyer for [Les-Tilleuls.coop](http://les-tilleuls.coop).
