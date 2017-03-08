@@ -11,6 +11,8 @@
 
 namespace spec\CoopTilleuls\Bundle\YmlpBundle\Ymlp;
 
+use CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException;
+use CoopTilleuls\Bundle\YmlpBundle\Ymlp\YmlpClient;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use GuzzleHttp\ClientInterface;
@@ -47,7 +49,7 @@ class YmlpClientSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('CoopTilleuls\Bundle\YmlpBundle\Ymlp\YmlpClient');
+        $this->shouldHaveType(YmlpClient::class);
     }
 
     function it_sends_commands()
@@ -57,6 +59,6 @@ class YmlpClientSpec extends ObjectBehavior
 
     function it_throws_error()
     {
-        $this->shouldThrow('\CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException')->duringCall('Error');
+        $this->shouldThrow(YmlpException::class)->duringCall('Error');
     }
 }
