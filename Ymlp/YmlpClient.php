@@ -43,7 +43,7 @@ class YmlpClient
                 'base_url'  => $apiUrl,
                 'defaults'  => [
                     'headers'   => [
-                        'User-Agent'    => 'CoopTilleulsYmlpBundle for Symfony2/3'
+                        'User-Agent'    => 'CoopTilleulsYmlpBundle for Symfony'
                     ],
                     'body'      => [
                         'Key'           => $apiKey,
