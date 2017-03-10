@@ -17,7 +17,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Message\ResponseInterface;
 
 /**
- * Test
+ * YmlpClient Spec.
  *
  * @author Kévin Dunglas <kevin@les-tilleuls.coop>
  */
