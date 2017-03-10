@@ -1,6 +1,6 @@
-# CoopTilleulsYmlpBundle, YMLP API for Symfony2
+# CoopTilleulsYmlpBundle, YMLP API for Symfony
 
-This bundle integrates the [Your Mailing List Provider (YMLP)](http://www.ymlp.com/) API into [Symfony2](http://symfony.com) projects.
+This bundle integrates the [Your Mailing List Provider (YMLP)](http://www.ymlp.com/) API into [Symfony](http://symfony.com) projects.
 
 [![Latest Stable Version](https://poser.pugx.org/tilleuls/ymlp-bundle/v/stable.svg)](https://packagist.org/packages/tilleuls/ymlp-bundle) [![Build Status](https://travis-ci.org/coopTilleuls/CoopTilleulsYmlpBundle.svg)](https://travis-ci.org/coopTilleuls/CoopTilleulsYmlpBundle) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5be76419-0b77-4283-82c9-7333dcf43595/mini.png)](https://insight.sensiolabs.com/projects/5be76419-0b77-4283-82c9-7333dcf43595)
 
