@@ -17,11 +17,11 @@ Add the bundle in your application kernel:
 
 public function registerBundles()
 {
-    return array(
+    return [
         // ...
         new CoopTilleuls\Bundle\YmlpBundle\CoopTilleulsYmlpBundle(),
         // ...
-    );
+    ];
 }
 ```
 
@@ -52,7 +52,7 @@ $pingResponse = $ymlpClient->call('Ping');
 
 // Add a new contact to one or more groups with exception handling
 try {
-    $contactsAddResponse = $ymlpClient->call('Contacts.Add', array('Email' => 'baptiste@les-tilleuls.coop', 'GroupID' => 1));
+    $contactsAddResponse = $ymlpClient->call('Contacts.Add', ['Email' => 'baptiste@les-tilleuls.coop', 'GroupID' => 1]);
 } catch (YmlpException $e) {
     //...
 }
