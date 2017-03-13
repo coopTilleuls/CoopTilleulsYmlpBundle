@@ -1,3 +1,9 @@
+### 1.1.1 (2017-03-13)
+
+  * Add support for Symfony 3
+  * Add PHP-CS-Fixer and fix CS
+  * Enhance the code coverage
+
 ### 1.1.0 (2014-09-23)
 
   * Upgrade Symfony components (~2.2 to ~2.3)
