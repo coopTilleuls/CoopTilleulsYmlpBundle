@@ -12,7 +12,7 @@
 namespace CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception;
 
 /**
- * YmlpException
+ * YmlpException.
  *
  * @author Baptiste Meyer <baptiste@les-tilleuls.coop>
  */

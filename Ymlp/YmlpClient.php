@@ -11,14 +11,14 @@
 
 namespace CoopTilleuls\Bundle\YmlpBundle\Ymlp;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ClientException;
 use CoopTilleuls\Bundle\YmlpBundle\Ymlp\Exception\YmlpException;
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * YmlpClient
+ * YmlpClient.
  *
  * @author Baptiste Meyer <baptiste@les-tilleuls.coop>
  */
@@ -30,7 +30,6 @@ class YmlpClient
     protected $client;
 
     /**
-     *
      * @param string          $apiUrl
      * @param string          $apiKey
      * @param string          $apiUsername
@@ -40,17 +39,17 @@ class YmlpClient
     {
         if (null === $client) {
             $client = new Client([
-                'base_url'  => $apiUrl,
-                'defaults'  => [
-                    'headers'   => [
-                        'User-Agent'    => 'CoopTilleulsYmlpBundle for Symfony'
+                'base_url' => $apiUrl,
+                'defaults' => [
+                    'headers' => [
+                        'User-Agent' => 'CoopTilleulsYmlpBundle for Symfony',
                     ],
-                    'body'      => [
-                        'Key'           => $apiKey,
-                        'Username'      => $apiUsername,
-                        'Output'        => 'JSON'
-                    ]
-                ]
+                    'body' => [
+                        'Key' => $apiKey,
+                        'Username' => $apiUsername,
+                        'Output' => 'JSON',
+                    ],
+                ],
             ]);
         }
 
@@ -58,29 +57,35 @@ class YmlpClient
     }
 
     /**
+     * Calls.
      *
-     * @param  string            $method
-     * @param  array             $params
-     * @return array
+     * @param string $method
+     * @param array  $params
+     *
      * @throws ClientException
      * @throws RequestException
      * @throws \LogicException
      * @throws \RuntimeException
      * @throws YmlpException
+     *
+     * @return array
      */
-    public function call($method, array $params = array())
+    public function call($method, array $params = [])
     {
-        $response = $this->client->post($method, array('body' => $params));
+        $response = $this->client->post($method, ['body' => $params]);
         $data = $this->parseError($response->json());
 
         return $data;
     }
 
     /**
+     * Parses error.
      *
-     * @param  array         $data
-     * @return array
+     * @param array $data
+     *
      * @throws YmlpException
+     *
+     * @return array
      */
     protected function parseError(array $data)
     {
